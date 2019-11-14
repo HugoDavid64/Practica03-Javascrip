@@ -225,7 +225,36 @@ function validarApellido() {
     }
     return true;
   }
-  
+  /*Validar Correo*/
+  function validarCorreo() {
+    banCorreo = false;
+    var elemento = document.getElementById("email");
+    var correo = elemento.value.split("@");
+    if (correo.length == 2) {
+      if (correo[0].length < 3) {
+        document.getElementById("mensajeEmail").innerHTML =
+          "<br>Direccion no valida abc@ups.edu.ec <br> abc@est.ups.edu.ec";
+        return false;
+      }
+      if (
+        correo[1].localeCompare("est.ups.edu.ec") == "0" ||
+        correo[1].localeCompare("ups.edu.ec") == "0"
+      ) {
+        document.getElementById("mensajeEmail").innerHTML = "";
+      } else {
+        document.getElementById("mensajeEmail").innerHTML =
+          "<br>@ups.edu.ec <br> @est.ups.edu.ec";
+        return false;
+      }
+    } else {
+      document.getElementById("mensajeEmail").innerHTML =
+        "<br>Direccion no valido abc@ups.edu.ec <br>Direccion no valido abc@est.ups.edu.ec";
+      return false;
+    }
+    banCorreo = true;
+    activarBtn();
+    return true;
+  }
   
   function activarBtn() {
     if (
