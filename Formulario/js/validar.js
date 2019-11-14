@@ -66,6 +66,25 @@ function validarNombre() {
   return false;
 }
 
+/*Validar Apellido*/
+
+function validarApellido() {
+  banApe = false;
+  var elemento = document.getElementById("apellido");
+  if (elemento.value.length > 2) {
+    banApe = true;
+    document.getElementById("mensajeApellido").innerHTML = "";
+    activarBtn();
+    return true;
+  } else {
+    activarBtn();
+    document.getElementById("mensajeApellido").innerHTML =
+      "<br>Ingrese apellido valido";
+  }
+  return false;
+}
+
+
  /*Validar que solo se ingresen numeros*/
   function validarNumero(evt) {
     var charCode = evt.which ? evt.which : event.keyCode;
