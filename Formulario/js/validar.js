@@ -49,10 +49,49 @@ var banPassword = false;
     return false;
   }
   
+/*Validar nombre*/
+function validarNombre() {
+  banNomb = false;
+  var elemento = document.getElementById("nombre");
+  if (elemento.value.length > 2) {
+    banNomb = true;
+    document.getElementById("mensajeNombre").innerHTML = "";
+    activarBtn();
+    return true;
+  } else {
+    activarBtn();
+    document.getElementById("mensajeNombre").innerHTML =
+      "<br>Ingrese nombre valido";
+  }
+  return false;
+}
+
+ /*Validar que solo se ingresen numeros*/
   function validarNumero(evt) {
     var charCode = evt.which ? evt.which : event.keyCode;
     if (!(charCode >= 48 && charCode <= 57)) {
       alert("Ingrese solo numeros.");
+      return false;
+    }
+    return true;
+  }
+
+  /*Validar que solo se ingrese texto*/
+  function validarTexto(evt) {
+    evt = evt ? evt : event;
+    var charCode = evt.charCode
+      ? evt.charCode
+      : evt.keyCode
+      ? evt.keyCode
+      : evt.which
+      ? evt.which
+      : 0;
+    if (
+      charCode > 32 &&
+      (charCode < 65 || charCode > 90) &&
+      (charCode < 97 || charCode > 122)
+    ) {
+      alert("Ingrese solo letras.");
       return false;
     }
     return true;
@@ -84,4 +123,8 @@ var banPassword = false;
   function limpiar() {
     location.reload();
   }
+
+
+
+
   
