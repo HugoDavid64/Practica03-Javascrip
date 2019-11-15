@@ -255,6 +255,41 @@ function validarApellido() {
     activarBtn();
     return true;
   }
+
+  /*Validar Contrasenia*/
+  function validarPassword() {
+    banPassword = false;
+    var elemento = document.getElementById("password");
+    if (elemento.value.length >= 8) {
+      document.getElementById("mensajePassword").innerHTML = "";
+      var banCaracter = false;
+      var banMayus = false;
+      var banMinus = false;
+      for (var i = 0; i < elemento.value.length; i++) {
+        var codigo = elemento.value.charCodeAt(i);
+        if ((codigo == 95 || codigo == 64 || codigo == 36) && !banCaracter)
+          banCaracter = true;
+        else if (codigo > 64 && codigo < 91 && !banMayus) banMayus = true;
+        else if (codigo > 96 && codigo < 123 && !banMinus) banMinus = true;
+      }
+      if (!banCaracter)
+        document.getElementById("mensajePassword").innerHTML =
+          "<br>Debe contener un caracter especial @ _ $";
+      if (!banMayus)
+        document.getElementById("mensajePassword").innerHTML =
+          "<br>Debe contener una Mayuscula";
+      if (!banMinus)
+        document.getElementById("mensajePassword").innerHTML =
+          "<br>Debe contener una minuscula";
+    } else {
+      document.getElementById("mensajePassword").innerHTML =
+        "<br>Contraseña debe tener minimo 8 caracteres";
+      return false;
+    }
+    if (banCaracter && banMayus && banMinus) banPassword = true;
+    activarBtn();
+    return true;
+  }
   
   function activarBtn() {
     if (
