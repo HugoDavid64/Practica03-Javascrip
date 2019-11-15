@@ -291,6 +291,9 @@ function validarApellido() {
     return true;
   }
   
+
+/*Funcion para asegurarse de que todos los campos sean ingresados */
+
   function activarBtn() {
     if (
       banCed &&
